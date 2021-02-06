@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Celulares</string>
+    <string name="home">Home</string>
+    <string name="telfs">Telefonos</string>
+    <string name="tablets">Tablets</string>
+    <string name="venta">Teléfonos disponibles</string>
+    <string name="marca">Marca</string>
+    <string name="no_disponible">No hay teléfonos disponibles</string>
+    <string name="comprar">Comprar</string>
+    <string name="seleciones_color">Seleccione color</string>
+    <string name="rojo">Rojo</string>
+    <string name="negro">Negro</string>
+    <string name="blanco">Blanco</string>
+    <string name="seleccione_accesorios">Selecciones Accesorios</string>
+    <string name="seleccione_memoria">Seleccione memoria</string>
+    <string name="memoria_128">128 GB</string>
+    <string name="memoria_64">64 GB</string>
+    <string name="memoria_32">32 GB</string>
+    <string name="descripcion">Descripción</string>
+</resources>

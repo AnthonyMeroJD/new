@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".DetalleActivity">
+
+    <TextView
+        android:id="@+id/detalle_telefono_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="IPhone 11"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:layout_marginTop="16sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/detalle_telefono_nombre"
+        android:layout_above="@id/contenedor_comprar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/detalle_telefono_imagen"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:src="@drawable/iphone"
+                android:contentDescription="@string/app_name"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detalle_telefono_nombre"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seleciones_color"/>
+            <RadioGroup
+                android:id="@+id/radio_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detalle_telefono_imagen"
+                app:layout_constraintEnd_toEndOf="parent">
+                <RadioButton
+                    android:id="@+id/radio_color_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rojo"/>
+                <RadioButton
+                    android:id="@+id/radio_color_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/negro"/>
+                <RadioButton
+                    android:id="@+id/radio_color_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/blanco"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seleccione_memoria"/>
+            <CheckBox
+                android:id="@+id/memoria_128"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memoria_128"/>
+            <CheckBox
+                android:id="@+id/memoria_64"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memoria_64"/>
+            <CheckBox
+                android:id="@+id/memoria_32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/memoria_32"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/descripcion"/>
+
+            <TextView
+                android:id="@+id/detalle_telefono_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/contenedor_comprar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:weightSum="4">
+        <Button
+            android:id="@+id/btn_comprar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/comprar"/>
+
+        <TextView
+            android:id="@+id/detalle_telefono_precio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="500$"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/design_default_color_primary"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

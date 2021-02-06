@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/nav_telfs"
+        android:icon="@drawable/ic_baseline_phone_android_24"
+        android:title="@string/telfs"/>
+
+    <item
+        android:id="@+id/nav_tablets"
+        android:icon="@drawable/ic_baseline_tablet_android_24"
+        android:title="@string/tablets"/>
+</menu>
