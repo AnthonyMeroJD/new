@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Usuario.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Usuario.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments.entities</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.Date</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Usuario {</span>
+    <span class="s0">private </span><span class="s1">String cedula</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String nombre</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String password</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String ciudad</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String telefono</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String direccion</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String rol</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Date fecha_creacion</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Usuario(String cedula</span><span class="s0">, </span><span class="s1">String nombre</span><span class="s0">, </span><span class="s1">String password</span><span class="s0">, </span><span class="s1">String ciudad</span><span class="s0">, </span><span class="s1">String telefono</span><span class="s0">, </span><span class="s1">String direccion</span><span class="s0">,</span><span class="s1">String rol) {</span>
+        <span class="s0">this</span><span class="s1">.cedula = cedula</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.nombre = nombre</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.password = password</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.ciudad = ciudad</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.telefono = telefono</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.direccion = direccion</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.rol=rol</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">Date getFecha_creacion() {</span>
+        <span class="s0">return </span><span class="s1">fecha_creacion</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setFecha_creacion(Date fecha_creacion) {</span>
+        <span class="s0">this</span><span class="s1">.fecha_creacion = fecha_creacion</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getRol() {</span>
+        <span class="s0">return </span><span class="s1">rol</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setRol(String rol) {</span>
+        <span class="s0">this</span><span class="s1">.rol = rol</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getCedula() {</span>
+        <span class="s0">return </span><span class="s1">cedula</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setCedula(String cedula) {</span>
+        <span class="s0">this</span><span class="s1">.cedula = cedula</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getNombre() {</span>
+        <span class="s0">return </span><span class="s1">nombre</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setNombre(String nombre) {</span>
+        <span class="s0">this</span><span class="s1">.nombre = nombre</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getPassword() {</span>
+        <span class="s0">return </span><span class="s1">password</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setPassword(String password) {</span>
+        <span class="s0">this</span><span class="s1">.password = password</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getCiudad() {</span>
+        <span class="s0">return </span><span class="s1">ciudad</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setCiudad(String ciudad) {</span>
+        <span class="s0">this</span><span class="s1">.ciudad = ciudad</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getTelefono() {</span>
+        <span class="s0">return </span><span class="s1">telefono</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setTelefono(String telefono) {</span>
+        <span class="s0">this</span><span class="s1">.telefono = telefono</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public </span><span class="s1">String getDireccion() {</span>
+        <span class="s0">return </span><span class="s1">direccion</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">setDireccion(String direccion) {</span>
+        <span class="s0">this</span><span class="s1">.direccion = direccion</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

@@ -15,7 +15,7 @@ import java.util.List;
 public class Usuarios {
 
     public  static  void  eliminarUsuario(Context context,String cedula){
-        String qry="DELETE FROM usuarioss WHERE cedula= "+cedula;
+        String qry="DELETE FROM usuarios2 WHERE cedula= "+cedula;
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
@@ -26,7 +26,7 @@ public class Usuarios {
     }
 
     public static void EditarUsuario(Context context,String cedula,Usuario user){
-        String qry="UPDATE usuarioss\n" +
+        String qry="UPDATE usuarios2\n" +
                 "SET nombre = \""+user.getNombre().trim()+"\" , "+
                 "pass = "+user.getPassword().trim()+" , "+
                 "numero = "+user.getTelefono().trim()+" , "+
@@ -50,7 +50,7 @@ public class Usuarios {
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
-            Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarioss WHERE cedula= "+cedula.trim(),
+            Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarios2 WHERE cedula= "+cedula.trim(),
                     null);
             if (c!=null ) {
                 c.moveToFirst();
@@ -79,7 +79,7 @@ public class Usuarios {
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
-        Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarioss WHERE cedula LIKE \""+cedula.trim()+"%\"",
+        Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarios2 WHERE cedula LIKE \""+cedula.trim()+"%\"",
                 null);
         if (c!=null ){
             c.moveToFirst();
@@ -102,7 +102,7 @@ public class Usuarios {
 
     public static  List<Usuario> getUsersByRank(Context context, String initFecha,String finalFecha) throws NullPointerException{
         List<Usuario> arrayUsuario = new ArrayList<Usuario>();
-        String sql= " SELECT * FROM usuarioss WHERE fecha_creacion BETWEEN "+initFecha +" AND "+ finalFecha;
+        String sql= " SELECT * FROM usuarios2 WHERE fecha_creacion BETWEEN '"+initFecha +"' AND '"+ finalFecha+"'";
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
@@ -124,7 +124,7 @@ public class Usuarios {
             }
             return arrayUsuario;
         }catch (Exception e){
-            System.out.println("null");
+            System.out.println("hhhhh"+e);
             return null;
         }
     }
@@ -136,7 +136,7 @@ public class Usuarios {
 
         SQLHelper sqlHelper = new SQLHelper(context);
         SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
-        Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarioss ",
+        Cursor c = enlaceBaseDatos.rawQuery(" SELECT * FROM usuarios2 ",
                 null);
         if (c!=null){
             c.moveToFirst();
@@ -172,7 +172,7 @@ public class Usuarios {
             cv.put("direccion", usuario.getDireccion());
             cv.put("ciudad", usuario.getCiudad());
             cv.put("rol", usuario.getRol());
-            enlaceBaseDatos.insert("usuarioss",   null, cv);
+            enlaceBaseDatos.insert("usuarios2",   null, cv);
             return true;
 
         }else{
@@ -186,7 +186,7 @@ public class Usuarios {
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
-            Cursor c = enlaceBaseDatos.rawQuery(" SELECT cedula , pass FROM usuarioss WHERE cedula="+cedula+" AND "+"pass="+password,
+            Cursor c = enlaceBaseDatos.rawQuery(" SELECT cedula , pass FROM usuarios2 WHERE cedula="+cedula+" AND "+"pass="+password,
                     null);
             boolean validate = false;
             if (c!=null){
@@ -204,7 +204,7 @@ public class Usuarios {
         try {
             SQLHelper sqlHelper = new SQLHelper(context);
             SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase();
-            Cursor c = enlaceBaseDatos.rawQuery(" SELECT rol FROM usuarioss WHERE cedula="+cedula+" AND "+"pass="+password,
+            Cursor c = enlaceBaseDatos.rawQuery(" SELECT rol FROM usuarios2 WHERE cedula="+cedula+" AND "+"pass="+password,
                     null);
             String rol = "undefine";
             if (c!=null){

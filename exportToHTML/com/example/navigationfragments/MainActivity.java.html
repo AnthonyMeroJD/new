@@ -22,6 +22,9 @@ MainActivity.java</font>
 <span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span>
 
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.R</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.Registro</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.AboutFragment</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.TelfFragment</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.HomeFragment</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.TabletFragment</span><span class="s0">;</span>
@@ -34,6 +37,7 @@ MainActivity.java</font>
     <span class="s1">HomeFragment inicio = </span><span class="s0">new </span><span class="s1">HomeFragment()</span><span class="s0">;</span>
     <span class="s1">TelfFragment telefonos = </span><span class="s0">new </span><span class="s1">TelfFragment()</span><span class="s0">;</span>
     <span class="s1">TabletFragment tablets = </span><span class="s0">new </span><span class="s1">TabletFragment()</span><span class="s0">;</span>
+    <span class="s1">AboutFragment about = </span><span class="s0">new </span><span class="s1">AboutFragment()</span><span class="s0">;</span>
     <span class="s1">@Override</span>
     <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
         <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
@@ -62,6 +66,9 @@ MainActivity.java</font>
                             <span class="s0">break;</span>
                         <span class="s0">case </span><span class="s1">R.id.nav_tablets:</span>
                             <span class="s1">selectedFragment = tablets</span><span class="s0">;</span>
+                            <span class="s0">break;</span>
+                        <span class="s0">case </span><span class="s1">R.id.nav_cliente:</span>
+                            <span class="s1">selectedFragment = about</span><span class="s0">;</span>
                             <span class="s0">break;</span>
                     <span class="s1">}</span>
 

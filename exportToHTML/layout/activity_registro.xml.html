@@ -35,6 +35,13 @@ activity_registro.xml</font>
             <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
             <span class="s1">app:layout_constraintTop_toTopOf</span><span class="s2">=&quot;parent&quot;</span><span class="s0">&gt;</span>
 
+            <span class="s0">&lt;ImageView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/imgAtras&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;44dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;44dp&quot;</span>
+                <span class="s1">android:src</span><span class="s2">=&quot;@drawable/ic_baseline_arrow_back_24&quot;</span>
+                <span class="s0">/&gt;</span>
+
 
             <span class="s0">&lt;TextView</span>
                 <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
@@ -47,176 +54,184 @@ activity_registro.xml</font>
 
         <span class="s0">&lt;/com.google.android.material.appbar.MaterialToolbar&gt;</span>
 
-        <span class="s0">&lt;androidx.cardview.widget.CardView</span>
-            <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+    <span class="s0">&lt;androidx.cardview.widget.CardView</span>
+        <span class="s1">android:id</span><span class="s2">=&quot;@+id/cardView&quot;</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+        <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">android:paddingBottom</span><span class="s2">=&quot;24dp&quot;</span>
+        <span class="s1">app:cardCornerRadius</span><span class="s2">=&quot;15dp&quot;</span>
+        <span class="s1">app:cardElevation</span><span class="s2">=&quot;16dp&quot;</span>
+        <span class="s1">app:layout_constraintBottom_toBottomOf</span><span class="s2">=&quot;parent&quot;</span>
+        <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+        <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+        <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/materialToolbar&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
             <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
             <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-            <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;0dp&quot;</span>
+            <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
             <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
             <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-            <span class="s1">android:paddingBottom</span><span class="s2">=&quot;24dp&quot;</span>
-            <span class="s1">app:cardCornerRadius</span><span class="s2">=&quot;15dp&quot;</span>
-            <span class="s1">app:cardElevation</span><span class="s2">=&quot;16dp&quot;</span>
-            <span class="s1">app:layout_constraintBottom_toBottomOf</span><span class="s2">=&quot;parent&quot;</span>
-            <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-            <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-            <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/materialToolbar&quot;</span><span class="s0">&gt;</span>
+            <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;16dp&quot;</span><span class="s0">&gt;</span>
 
-            <span class="s0">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
-                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
-                <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/textView23&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;@string/crear_cuenta&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;28sp&quot;</span>
+                <span class="s1">android:textStyle</span><span class="s2">=&quot;bold&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toTopOf</span><span class="s2">=&quot;parent&quot; </span><span class="s0">/&gt;</span>
+
+
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/ediTextCedula&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
                 <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
                 <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
                 <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
                 <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
                 <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;16dp&quot;</span><span class="s0">&gt;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/cedula&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/cedula&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;number&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/textView23&quot; </span><span class="s0">/&gt;</span>
 
-                <span class="s0">&lt;TextView</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/textView23&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:text</span><span class="s2">=&quot;@string/crear_cuenta&quot;</span>
-                    <span class="s1">android:textSize</span><span class="s2">=&quot;28sp&quot;</span>
-                    <span class="s1">android:textStyle</span><span class="s2">=&quot;bold&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toTopOf</span><span class="s2">=&quot;parent&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextNombre&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/nombre_completo&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/nombre_completo&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextContrasena&quot; </span><span class="s0">/&gt;</span>
 
-
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/ediTextCedula&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/cedula&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/cedula&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;number&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/textView23&quot; </span><span class="s0">/&gt;</span>
-
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextNombre&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/nombre_completo&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/nombre_completo&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextContrasena&quot; </span><span class="s0">/&gt;</span>
-
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextTelefonoRegistro&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/telefono&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/telefono&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;phone&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextNombre&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextTelefonoRegistro&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/telefono&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/telefono&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;phone&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextNombre&quot; </span><span class="s0">/&gt;</span>
 
 
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextDireccion&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/direccion&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/direccion&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;textPassword&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextTelefonoRegistro&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextDireccion&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/direccion&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/direccion&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextTelefonoRegistro&quot; </span><span class="s0">/&gt;</span>
 
 
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextCiudad&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/ciudad&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/ciudad&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextDireccion&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextCiudad&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/ciudad&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/ciudad&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextDireccion&quot; </span><span class="s0">/&gt;</span>
 
-                <span class="s0">&lt;EditText</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextContrasena&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/contrasena&quot;</span>
-                    <span class="s1">android:hint</span><span class="s2">=&quot;@string/contrasena&quot;</span>
-                    <span class="s1">android:inputType</span><span class="s2">=&quot;text&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/ediTextCedula&quot; </span><span class="s0">/&gt;</span>
-
-
-                <span class="s0">&lt;Button</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/buttonCrearCuentaRegistro&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
-                    <span class="s1">android:onClick</span><span class="s2">=&quot;btnRegistro&quot;</span>
-                    <span class="s1">android:padding</span><span class="s2">=&quot;20dp&quot;</span>
-                    <span class="s1">android:text</span><span class="s2">=&quot;@string/crear_cuenta&quot;</span>
-                    <span class="s1">android:textSize</span><span class="s2">=&quot;18sp&quot;</span>
-                    <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
-                    <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextCiudad&quot;</span>
-                    <span class="s1">tools:targetApi</span><span class="s2">=&quot;lollipop&quot; </span><span class="s0">/&gt;</span>
-
-                <span class="s0">&lt;androidx.constraintlayout.widget.Guideline</span>
-                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/guideline8&quot;</span>
-                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
-                    <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span>
-                    <span class="s1">app:layout_constraintGuide_begin</span><span class="s2">=&quot;181dp&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;EditText</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/editTextContrasena&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;0dp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:autofillHints</span><span class="s2">=&quot;@string/contrasena&quot;</span>
+                <span class="s1">android:hint</span><span class="s2">=&quot;@string/contrasena&quot;</span>
+                <span class="s1">android:inputType</span><span class="s2">=&quot;textPassword&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/ediTextCedula&quot; </span><span class="s0">/&gt;</span>
 
 
-            <span class="s0">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+            <span class="s0">&lt;Spinner</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/spinner&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/editTextCiudad&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;androidx.constraintlayout.widget.Guideline</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/guideline8&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span>
+                <span class="s1">app:layout_constraintGuide_begin</span><span class="s2">=&quot;181dp&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;Button</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/buttonCrearCuentaRegistro&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:onClick</span><span class="s2">=&quot;btnRegistro&quot;</span>
+                <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;16dp&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;20dp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;@string/crear_cuenta&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;18sp&quot;</span>
+                <span class="s1">app:layout_constraintBottom_toBottomOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintEnd_toEndOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintStart_toStartOf</span><span class="s2">=&quot;parent&quot;</span>
+                <span class="s1">app:layout_constraintTop_toBottomOf</span><span class="s2">=&quot;@+id/spinner&quot;</span>
+                <span class="s1">tools:targetApi</span><span class="s2">=&quot;lollipop&quot; </span><span class="s0">/&gt;</span>
 
 
-        <span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span>
+        <span class="s0">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
 
-    <span class="s0">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+
+    <span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span>
+
+<span class="s0">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
 </pre>
 </body>
 </html>

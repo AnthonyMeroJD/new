@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>MainActivityAdmin.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivityAdmin.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.PersistableBundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.AboutFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.BusquedaFechaFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.RegistroFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.UsuariosFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.bottomnavigation.BottomNavigationView</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivityAdmin </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s1">RegistroFragment registroFragment=</span><span class="s0">new </span><span class="s1">RegistroFragment()</span><span class="s0">;</span>
+    <span class="s1">UsuariosFragment usuariosFragment=</span><span class="s0">new </span><span class="s1">UsuariosFragment()</span><span class="s0">;</span>
+    <span class="s1">AboutFragment aboutFragment = </span><span class="s0">new </span><span class="s1">AboutFragment()</span><span class="s0">;</span>
+    <span class="s1">BusquedaFechaFragment busqueda_fechas=</span><span class="s0">new </span><span class="s1">BusquedaFechaFragment()</span><span class="s0">;</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+
+        <span class="s1">setContentView(R.layout.activity_admin)</span><span class="s0">;</span>
+
+        <span class="s1">BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_admin)</span><span class="s0">;</span>
+        <span class="s1">bottomNavigationView.setOnNavigationItemSelectedListener(navListener)</span><span class="s0">;</span>
+
+        <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragment_admin</span><span class="s0">, </span><span class="s1">registroFragment).commit()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+
+    <span class="s0">private </span><span class="s1">BottomNavigationView.OnNavigationItemSelectedListener navListener =</span>
+            <span class="s0">new </span><span class="s1">BottomNavigationView.OnNavigationItemSelectedListener() {</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public boolean </span><span class="s1">onNavigationItemSelected(@NonNull MenuItem item) {</span>
+
+                    <span class="s1">Fragment selectedFragment = </span><span class="s0">null;</span>
+
+                    <span class="s0">switch </span><span class="s1">(item.getItemId()){</span>
+                        <span class="s0">case </span><span class="s1">R.id.nav_regClientes:</span>
+                            <span class="s1">selectedFragment = registroFragment</span><span class="s0">;</span>
+                            <span class="s0">break;</span>
+                        <span class="s0">case </span><span class="s1">R.id.nav_busClientes:</span>
+                            <span class="s1">selectedFragment = usuariosFragment</span><span class="s0">;</span>
+                            <span class="s0">break;</span>
+
+                        <span class="s0">case </span><span class="s1">R.id.nav_editClientes:</span>
+                            <span class="s1">selectedFragment = aboutFragment</span><span class="s0">;</span>
+                            <span class="s0">break;</span>
+                        <span class="s0">case </span><span class="s1">R.id.nav_busqueda_fecha:</span>
+                            <span class="s1">selectedFragment=busqueda_fechas</span><span class="s0">;</span>
+                            <span class="s0">break;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">getSupportFragmentManager().beginTransaction().replace(R.id.fragment_admin</span><span class="s0">, </span><span class="s1">selectedFragment).commit()</span><span class="s0">;</span>
+
+                    <span class="s0">return true;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span><span class="s0">;</span>
+
+
+
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

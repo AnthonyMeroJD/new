@@ -37,10 +37,10 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         try {
-            List<Usuario> users = Usuarios.getUsersByRank(this,"2021-02-20","2021-02-20");
+            List<Usuario> users = Usuarios.getUsersByRank(this,"2021-01-20","2021-02-21");
             for (Usuario u:users
             ) {
-                System.out.println(u.getNombre());
+                System.out.println("name"+u.getRol());
             }
         }catch (Exception e){
 

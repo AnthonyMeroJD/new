@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>DialogEditar.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DialogEditar.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.FragmentActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.entities.Usuario</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.fragments.UsuariosFragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.repo.Usuarios</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.bottomsheet.BottomSheetDialogFragment</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">es.dmoral.toasty.Toasty</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">DialogEditar </span><span class="s0">extends </span><span class="s1">BottomSheetDialogFragment {</span>
+    <span class="s0">private </span><span class="s1">EditText cedula</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText pass</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText ciudad</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText telefono</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText direccion</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText nombre</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btn</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button btnCancelar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String ci</span><span class="s0">;</span>
+    <span class="s1">@Nullable</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View onCreateView(@NonNull LayoutInflater inflater</span><span class="s0">, </span><span class="s1">@Nullable ViewGroup container</span><span class="s0">, </span><span class="s1">@Nullable Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreateView(inflater</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, </span><span class="s1">savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">View root = inflater.inflate(R.layout.fragment_registro</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">cedula=root.findViewById(R.id.ediTextCedulaActualizacion)</span><span class="s0">;</span>
+        <span class="s1">pass=root.findViewById(R.id.editTextContrasenaActualizacion)</span><span class="s0">;</span>
+        <span class="s1">ciudad=root.findViewById(R.id.editTextCiudadActualizacion)</span><span class="s0">;</span>
+        <span class="s1">telefono=root.findViewById(R.id.editTextTelefonoRegistroActualizacion)</span><span class="s0">;</span>
+        <span class="s1">direccion=root.findViewById(R.id.editTextDireccionActualizacion)</span><span class="s0">;</span>
+        <span class="s1">nombre=root.findViewById(R.id.editTextNombreActualizacion)</span><span class="s0">;</span>
+        <span class="s1">btn=root.findViewById(R.id.buttonGuardarDatosActualizacion)</span><span class="s0">;</span>
+        <span class="s0">return  </span><span class="s1">root</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onStart() {</span>
+        <span class="s0">super</span><span class="s1">.onStart()</span><span class="s0">;</span>
+
+
+         <span class="s1">ci= </span><span class="s0">null;</span>
+        <span class="s0">if </span><span class="s1">(getArguments() != </span><span class="s0">null</span><span class="s1">) {</span>
+
+            <span class="s1">ci = getArguments().getString(</span><span class="s2">&quot;cedula&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">try </span><span class="s1">{</span>
+
+                <span class="s1">Usuario user= Usuarios.getUserByCi(getContext()</span><span class="s0">,</span><span class="s1">ci)</span><span class="s0">;</span>
+                <span class="s1">System.out.println(user.getTelefono())</span><span class="s0">;</span>
+                <span class="s1">cedula.setText(ci</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+                <span class="s1">pass.setText(user.getPassword()</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+                <span class="s1">ciudad.setText(user.getCiudad()</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+                <span class="s1">telefono.setText(user.getTelefono()</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+                <span class="s1">direccion.setText(user.getDireccion()</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+                <span class="s1">nombre.setText(user.getNombre()</span><span class="s0">, </span><span class="s1">TextView.BufferType.EDITABLE)</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+                <span class="s1">Toasty.error(getContext()</span><span class="s0">, </span><span class="s2">&quot;algo inesperado ocurrio&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">btn.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+                <span class="s1">@Override</span>
+                <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                    <span class="s1">Usuario userA= Usuarios.getUserByCi(getContext()</span><span class="s0">,</span><span class="s1">ci)</span><span class="s0">;</span>
+                    <span class="s1">Usuario user=</span><span class="s0">new </span><span class="s1">Usuario(cedula.getText().toString()</span><span class="s0">,</span><span class="s1">nombre.getText().toString()</span><span class="s0">,</span>
+                            <span class="s1">pass.getText().toString()</span><span class="s0">,</span><span class="s1">ciudad.getText().toString()</span><span class="s0">,</span><span class="s1">telefono.getText().toString()</span><span class="s0">,</span>
+                            <span class="s1">direccion.getText().toString()</span><span class="s0">,</span><span class="s1">userA.getRol())</span><span class="s0">;</span>
+                    <span class="s1">Usuarios.EditarUsuario(getContext()</span><span class="s0">,</span><span class="s1">ci</span><span class="s0">,</span><span class="s1">user)</span><span class="s0">;</span>
+                    <span class="s1">Toasty.success(v.getContext()</span><span class="s0">,</span><span class="s2">&quot;se actualizo los datos correctamente&quot;</span><span class="s0">,</span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+                    <span class="s1">Intent intentAdmin = </span><span class="s0">new </span><span class="s1">Intent(v.getContext()</span><span class="s0">, </span><span class="s1">MainActivityAdmin.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s1">startActivity(intentAdmin)</span><span class="s0">;</span>
+
+
+
+                <span class="s1">}</span>
+            <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>BusquedaFechaFragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BusquedaFechaFragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments.fragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.app.DatePickerDialog</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.app.TimePickerDialog</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.DatePicker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TimePicker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.recyclerview.widget.LinearLayoutManager</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.recyclerview.widget.RecyclerView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.R</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.adapters.UsersAdapter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.entities.Usuario</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.repo.Usuarios</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.button.MaterialButton</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.material.textfield.TextInputEditText</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Calendar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">es.dmoral.toasty.Toasty</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">BusquedaFechaFragment </span><span class="s0">extends </span><span class="s1">Fragment {</span>
+
+    <span class="s0">private </span><span class="s1">UsersAdapter myAdapter</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextInputEditText fecha1</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">TextInputEditText fecha2</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">MaterialButton btn</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">RecyclerView listView</span><span class="s0">;</span>
+
+
+    <span class="s1">@Nullable</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View onCreateView(@NonNull LayoutInflater inflater</span><span class="s0">, </span><span class="s1">@Nullable ViewGroup container</span><span class="s0">, </span><span class="s1">@Nullable Bundle savedInstanceState) {</span>
+        <span class="s1">View root = inflater.inflate(R.layout.fragment_busqueda</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">fecha1=root.findViewById(R.id.txtInputBusquedaFecha1)</span><span class="s0">;</span>
+        <span class="s1">fecha2=root.findViewById(R.id.txtInputBusquedaFecha2)</span><span class="s0">;</span>
+        <span class="s1">btn=root.findViewById(R.id.btnBuscarFecha)</span><span class="s0">;</span>
+     <span class="s1">listView=root.findViewById(R.id.rVListaConsulta)</span><span class="s0">;</span>
+        <span class="s0">return </span><span class="s1">root</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onStart() {</span>
+        <span class="s0">super</span><span class="s1">.onStart()</span><span class="s0">;</span>
+        <span class="s1">fecha1.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">DatePickerFragment newFragment = DatePickerFragment.newInstance(</span><span class="s0">new </span><span class="s1">DatePickerDialog.OnDateSetListener() {</span>
+                    <span class="s1">@Override</span>
+                    <span class="s0">public void </span><span class="s1">onDateSet(DatePicker datePicker</span><span class="s0">, int </span><span class="s1">year</span><span class="s0">, int </span><span class="s1">month</span><span class="s0">, int </span><span class="s1">day) {</span>
+                        <span class="s0">final </span><span class="s1">String selectedDate</span><span class="s0">;</span>
+                        <span class="s0">if </span><span class="s1">(month&lt;</span><span class="s2">10 </span><span class="s1">&amp;&amp; day&gt;</span><span class="s2">10</span><span class="s1">){</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span><span class="s0">else if</span><span class="s1">(month&lt;</span><span class="s2">10 </span><span class="s1">&amp;&amp; day&lt;</span><span class="s2">10</span><span class="s1">){</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                        <span class="s0">else </span><span class="s1">{</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                        <span class="s1">fecha1.setText(selectedDate)</span><span class="s0">;</span>
+
+                    <span class="s1">}</span>
+                <span class="s1">})</span><span class="s0">;</span>
+
+                <span class="s1">newFragment.show(getActivity().getSupportFragmentManager()</span><span class="s0">, </span><span class="s3">&quot;datePicker&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">fecha2.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">DatePickerFragment newFragment = DatePickerFragment.newInstance(</span><span class="s0">new </span><span class="s1">DatePickerDialog.OnDateSetListener() {</span>
+                    <span class="s1">@Override</span>
+                    <span class="s0">public void </span><span class="s1">onDateSet(DatePicker datePicker</span><span class="s0">, int </span><span class="s1">year</span><span class="s0">, int </span><span class="s1">month</span><span class="s0">, int </span><span class="s1">day) {</span>
+
+                        <span class="s0">final </span><span class="s1">String selectedDate</span><span class="s0">;</span>
+                        <span class="s0">if </span><span class="s1">(month&lt;</span><span class="s2">10 </span><span class="s1">&amp;&amp; day&gt;</span><span class="s2">10</span><span class="s1">){</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span><span class="s0">else if</span><span class="s1">(month&lt;</span><span class="s2">10 </span><span class="s1">&amp;&amp; day&lt;</span><span class="s2">10</span><span class="s1">){</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-0&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                        <span class="s0">else </span><span class="s1">{</span>
+                            <span class="s1">selectedDate = year + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ (month + </span><span class="s2">1</span><span class="s1">) + </span><span class="s3">&quot;-&quot; </span><span class="s1">+ day</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                        <span class="s1">fecha2.setText(selectedDate)</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">})</span><span class="s0">;</span>
+
+                <span class="s1">newFragment.show(getActivity().getSupportFragmentManager()</span><span class="s0">, </span><span class="s3">&quot;datePicker&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+        <span class="s1">btn.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">String f1=fecha1.getText().toString()</span><span class="s0">;</span>
+                <span class="s1">String f2=fecha2.getText().toString()</span><span class="s0">;</span>
+                <span class="s0">if </span><span class="s1">(f1.length()&gt;</span><span class="s2">0</span><span class="s1">&amp;&amp;f2.length()&gt;</span><span class="s2">0</span><span class="s1">){</span>
+                    <span class="s0">try </span><span class="s1">{</span>
+                        <span class="s1">System.out.println(f1+</span><span class="s3">&quot;&quot;</span><span class="s1">+f2)</span><span class="s0">;</span>
+                        <span class="s1">List&lt;Usuario&gt; usuarios=  Usuarios.getUsersByRank(getContext()</span><span class="s0">,</span><span class="s1">f1</span><span class="s0">,</span><span class="s1">f2)</span><span class="s0">;</span>
+                        <span class="s0">if </span><span class="s1">(usuarios.size()&gt;</span><span class="s2">0</span><span class="s1">){</span>
+                            <span class="s1">fillListView(v.getContext()</span><span class="s0">,</span><span class="s1">usuarios)</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+
+                    <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+
+                        <span class="s1">Toasty.error(v.getContext()</span><span class="s0">,</span><span class="s3">&quot;sin resultados&quot;</span><span class="s0">,</span><span class="s1">Toasty.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+
+                <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">Toasty.warning(v.getContext()</span><span class="s0">,</span><span class="s3">&quot;ingrese los rangos de la fecha&quot;</span><span class="s0">,</span><span class="s1">Toasty.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">fillListView(Context context</span><span class="s0">,</span><span class="s1">List &lt;Usuario&gt; usuarios){</span>
+        <span class="s1">listView.setLayoutManager(</span><span class="s0">new </span><span class="s1">LinearLayoutManager(context))</span><span class="s0">;</span>
+        <span class="s1">myAdapter = </span><span class="s0">new </span><span class="s1">UsersAdapter(</span><span class="s0">this, </span><span class="s1">context </span><span class="s0">,</span><span class="s1">usuarios)</span><span class="s0">;</span>
+        <span class="s1">listView.setAdapter(myAdapter)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

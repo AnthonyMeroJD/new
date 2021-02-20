@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>Usuarios.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Usuarios.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments.repo</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.ContentValues</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.database.Cursor</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.database.sqlite.SQLiteDatabase</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.entities.Usuario</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.utils.SQLHelper</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Usuarios {</span>
+
+    <span class="s0">public  static  void  </span><span class="s1">eliminarUsuario(Context context</span><span class="s0">,</span><span class="s1">String cedula){</span>
+        <span class="s1">String qry=</span><span class="s2">&quot;DELETE FROM usuarios2 WHERE cedula= &quot;</span><span class="s1">+cedula</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">enlaceBaseDatos.execSQL(qry)</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">EditarUsuario(Context context</span><span class="s0">,</span><span class="s1">String cedula</span><span class="s0">,</span><span class="s1">Usuario user){</span>
+        <span class="s1">String qry=</span><span class="s2">&quot;UPDATE usuarios2</span><span class="s0">\n</span><span class="s2">&quot; </span><span class="s1">+</span>
+                <span class="s2">&quot;SET nombre = </span><span class="s0">\&quot;</span><span class="s2">&quot;</span><span class="s1">+user.getNombre().trim()+</span><span class="s2">&quot;</span><span class="s0">\&quot; </span><span class="s2">, &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;pass = &quot;</span><span class="s1">+user.getPassword().trim()+</span><span class="s2">&quot; , &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;numero = &quot;</span><span class="s1">+user.getTelefono().trim()+</span><span class="s2">&quot; , &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;direccion =</span><span class="s0">\&quot;</span><span class="s2">&quot;</span><span class="s1">+user.getDireccion().trim()+</span><span class="s2">&quot;</span><span class="s0">\&quot; </span><span class="s2">, &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;ciudad = </span><span class="s0">\&quot;</span><span class="s2">&quot;</span><span class="s1">+user.getCiudad().trim()+</span><span class="s2">&quot;</span><span class="s0">\&quot; </span><span class="s2">, &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;cedula = &quot;</span><span class="s1">+user.getCedula().trim()+</span><span class="s2">&quot;  &quot;</span><span class="s1">+</span>
+                <span class="s2">&quot;WHERE cedula = &quot;</span><span class="s1">+cedula</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">enlaceBaseDatos.execSQL(qry)</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public static </span><span class="s1">Usuario getUserByCi(Context context</span><span class="s0">,</span><span class="s1">String cedula)</span><span class="s0">throws </span><span class="s1">NullPointerException{</span>
+        <span class="s1">Usuario user=</span><span class="s0">null;</span>
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(</span><span class="s2">&quot; SELECT * FROM usuarios2 WHERE cedula= &quot;</span><span class="s1">+cedula.trim()</span><span class="s0">,</span>
+                    <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null </span><span class="s1">) {</span>
+                <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+                <span class="s0">do </span><span class="s1">{</span>
+                    <span class="s1">String nombre = c.getString(c.getColumnIndex(</span><span class="s2">&quot;nombre&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String pass = c.getString(c.getColumnIndex(</span><span class="s2">&quot;pass&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String numero = c.getString(c.getColumnIndex(</span><span class="s2">&quot;numero&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String direccion = c.getString(c.getColumnIndex(</span><span class="s2">&quot;direccion&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String ciudad = c.getString(c.getColumnIndex(</span><span class="s2">&quot;ciudad&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String rol = c.getString(c.getColumnIndex(</span><span class="s2">&quot;rol&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">user = </span><span class="s0">new </span><span class="s1">Usuario(cedula</span><span class="s0">, </span><span class="s1">nombre</span><span class="s0">, </span><span class="s1">pass</span><span class="s0">,</span><span class="s1">ciudad</span><span class="s0">, </span><span class="s1">numero</span><span class="s0">, </span><span class="s1">direccion</span><span class="s0">, </span><span class="s1">rol)</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+                <span class="s1">} </span><span class="s0">while </span><span class="s1">(c.moveToNext())</span><span class="s0">;</span>
+                <span class="s0">return </span><span class="s1">user</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span><span class="s0">return null;</span><span class="s1">}</span>
+
+        <span class="s1">}</span><span class="s0">catch</span><span class="s1">(Exception e) {</span>
+            <span class="s0">return </span><span class="s1">user</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public static  </span><span class="s1">List&lt;Usuario&gt; getUsersByLikeCedula(Context context</span><span class="s0">, </span><span class="s1">String cedula) </span><span class="s0">throws </span><span class="s1">NullPointerException{</span>
+        <span class="s1">List&lt;Usuario&gt; arrayUsuario = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Usuario&gt;()</span><span class="s0">;</span>
+
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+        <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(</span><span class="s2">&quot; SELECT * FROM usuarios2 WHERE cedula LIKE </span><span class="s0">\&quot;</span><span class="s2">&quot;</span><span class="s1">+cedula.trim()+</span><span class="s2">&quot;%</span><span class="s0">\&quot;</span><span class="s2">&quot;</span><span class="s0">,</span>
+                <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null </span><span class="s1">){</span>
+            <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+            <span class="s0">do </span><span class="s1">{</span>
+                <span class="s1">String nombre=c.getString(c.getColumnIndex(</span><span class="s2">&quot;nombre&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String pass=c.getString(c.getColumnIndex(</span><span class="s2">&quot;pass&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String numero=c.getString(c.getColumnIndex(</span><span class="s2">&quot;numero&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String direccion=c.getString(c.getColumnIndex(</span><span class="s2">&quot;direccion&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String ciudad=c.getString(c.getColumnIndex(</span><span class="s2">&quot;ciudad&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String rol=c.getString(c.getColumnIndex(</span><span class="s2">&quot;rol&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">Usuario user=</span><span class="s0">new </span><span class="s1">Usuario(cedula</span><span class="s0">,</span><span class="s1">nombre</span><span class="s0">,</span><span class="s1">pass</span><span class="s0">,</span><span class="s1">ciudad</span><span class="s0">,</span><span class="s1">numero</span><span class="s0">,</span><span class="s1">direccion</span><span class="s0">,</span><span class="s1">rol)</span><span class="s0">;</span>
+                <span class="s1">arrayUsuario.add(user)</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">while </span><span class="s1">(c.moveToNext())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">arrayUsuario</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static  </span><span class="s1">List&lt;Usuario&gt; getUsersByRank(Context context</span><span class="s0">, </span><span class="s1">String initFecha</span><span class="s0">,</span><span class="s1">String finalFecha) </span><span class="s0">throws </span><span class="s1">NullPointerException{</span>
+        <span class="s1">List&lt;Usuario&gt; arrayUsuario = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Usuario&gt;()</span><span class="s0">;</span>
+        <span class="s1">String sql= </span><span class="s2">&quot; SELECT * FROM usuarios2 WHERE fecha_creacion BETWEEN '&quot;</span><span class="s1">+initFecha +</span><span class="s2">&quot;' AND '&quot;</span><span class="s1">+ finalFecha+</span><span class="s2">&quot;'&quot;</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(sql</span><span class="s0">,</span>
+                    <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null </span><span class="s1">){</span>
+                <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+                <span class="s0">do </span><span class="s1">{</span>
+                    <span class="s1">String nombre=c.getString(c.getColumnIndex(</span><span class="s2">&quot;nombre&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String pass=c.getString(c.getColumnIndex(</span><span class="s2">&quot;pass&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String numero=c.getString(c.getColumnIndex(</span><span class="s2">&quot;numero&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String direccion=c.getString(c.getColumnIndex(</span><span class="s2">&quot;direccion&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String ciudad=c.getString(c.getColumnIndex(</span><span class="s2">&quot;ciudad&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String rol=c.getString(c.getColumnIndex(</span><span class="s2">&quot;rol&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">String ci=c.getString(c.getColumnIndex(</span><span class="s2">&quot;cedula&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                    <span class="s1">Usuario user=</span><span class="s0">new </span><span class="s1">Usuario(ci</span><span class="s0">,</span><span class="s1">nombre</span><span class="s0">,</span><span class="s1">pass</span><span class="s0">,</span><span class="s1">ciudad</span><span class="s0">,</span><span class="s1">numero</span><span class="s0">,</span><span class="s1">direccion</span><span class="s0">,</span><span class="s1">rol)</span><span class="s0">;</span>
+                    <span class="s1">arrayUsuario.add(user)</span><span class="s0">;</span>
+                <span class="s1">}</span><span class="s0">while </span><span class="s1">(c.moveToNext())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">return </span><span class="s1">arrayUsuario</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;hhhhh&quot;</span><span class="s1">+e)</span><span class="s0">;</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static  </span><span class="s1">List&lt;Usuario&gt; getAllUsers(Context context){</span>
+        <span class="s1">List&lt;Usuario&gt; arrayUsuario = </span><span class="s0">new </span><span class="s1">ArrayList&lt;Usuario&gt;()</span><span class="s0">;</span>
+        <span class="s0">try </span><span class="s1">{</span>
+
+
+        <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+        <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+        <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(</span><span class="s2">&quot; SELECT * FROM usuarios2 &quot;</span><span class="s0">,</span>
+                <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null</span><span class="s1">){</span>
+            <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+            <span class="s0">do </span><span class="s1">{</span>
+                <span class="s1">String nombre=c.getString(c.getColumnIndex(</span><span class="s2">&quot;nombre&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String cedula=c.getString(c.getColumnIndex(</span><span class="s2">&quot;cedula&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String pass=c.getString(c.getColumnIndex(</span><span class="s2">&quot;pass&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String numero=c.getString(c.getColumnIndex(</span><span class="s2">&quot;numero&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String direccion=c.getString(c.getColumnIndex(</span><span class="s2">&quot;direccion&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String ciudad=c.getString(c.getColumnIndex(</span><span class="s2">&quot;ciudad&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">String rol=c.getString(c.getColumnIndex(</span><span class="s2">&quot;rol&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">System.out.println(c.getString(c.getColumnIndex(</span><span class="s2">&quot;fecha_creacion&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+                <span class="s1">Usuario user=</span><span class="s0">new </span><span class="s1">Usuario(cedula</span><span class="s0">,</span><span class="s1">nombre</span><span class="s0">,</span><span class="s1">pass</span><span class="s0">,</span><span class="s1">ciudad</span><span class="s0">,</span><span class="s1">numero</span><span class="s0">,</span><span class="s1">direccion</span><span class="s0">,</span><span class="s1">rol)</span><span class="s0">;</span>
+                <span class="s1">arrayUsuario.add(user)</span><span class="s0">;</span>
+            <span class="s1">}</span><span class="s0">while </span><span class="s1">(c.moveToNext())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">arrayUsuario</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+            <span class="s0">return </span><span class="s1">arrayUsuario</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static boolean </span><span class="s1">registrar(Usuario usuario</span><span class="s0">, </span><span class="s1">Context context){</span>
+
+        <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+        <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+        <span class="s0">if </span><span class="s1">(enlaceBaseDatos != </span><span class="s0">null</span><span class="s1">){</span>
+            <span class="s1">ContentValues cv = </span><span class="s0">new </span><span class="s1">ContentValues()</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;cedula&quot;</span><span class="s0">, </span><span class="s1">usuario.getCedula())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;nombre&quot;</span><span class="s0">, </span><span class="s1">usuario.getNombre())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;pass&quot;</span><span class="s0">, </span><span class="s1">usuario.getPassword())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;numero&quot;</span><span class="s0">,</span><span class="s1">usuario.getTelefono())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;direccion&quot;</span><span class="s0">, </span><span class="s1">usuario.getDireccion())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;ciudad&quot;</span><span class="s0">, </span><span class="s1">usuario.getCiudad())</span><span class="s0">;</span>
+            <span class="s1">cv.put(</span><span class="s2">&quot;rol&quot;</span><span class="s0">, </span><span class="s1">usuario.getRol())</span><span class="s0">;</span>
+            <span class="s1">enlaceBaseDatos.insert(</span><span class="s2">&quot;usuarios2&quot;</span><span class="s0">,   null, </span><span class="s1">cv)</span><span class="s0">;</span>
+            <span class="s0">return true;</span>
+
+        <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+            <span class="s0">return false;</span>
+        <span class="s1">}</span>
+
+       
+    <span class="s1">}</span>
+
+    <span class="s0">public static boolean </span><span class="s1">inicarSesion(String cedula</span><span class="s0">, </span><span class="s1">String password</span><span class="s0">, </span><span class="s1">Context context){</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(</span><span class="s2">&quot; SELECT cedula , pass FROM usuarios2 WHERE cedula=&quot;</span><span class="s1">+cedula+</span><span class="s2">&quot; AND &quot;</span><span class="s1">+</span><span class="s2">&quot;pass=&quot;</span><span class="s1">+password</span><span class="s0">,</span>
+                    <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">boolean </span><span class="s1">validate = </span><span class="s0">false;</span>
+            <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null</span><span class="s1">){</span>
+                <span class="s1">validate=</span><span class="s0">true;</span>
+            <span class="s1">}</span>
+            <span class="s0">return </span><span class="s1">validate</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+            <span class="s1">Toast.makeText(context</span><span class="s0">,</span><span class="s2">&quot;Error en las credenciales&quot;</span><span class="s0">,</span><span class="s1">Toast.LENGTH_LONG)</span><span class="s0">;</span>
+            <span class="s0">return false;</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public static </span><span class="s1">String whoIsThisUser(String cedula</span><span class="s0">, </span><span class="s1">String password</span><span class="s0">, </span><span class="s1">Context context){</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s1">SQLHelper sqlHelper = </span><span class="s0">new </span><span class="s1">SQLHelper(context)</span><span class="s0">;</span>
+            <span class="s1">SQLiteDatabase enlaceBaseDatos = sqlHelper.getWritableDatabase()</span><span class="s0">;</span>
+            <span class="s1">Cursor c = enlaceBaseDatos.rawQuery(</span><span class="s2">&quot; SELECT rol FROM usuarios2 WHERE cedula=&quot;</span><span class="s1">+cedula+</span><span class="s2">&quot; AND &quot;</span><span class="s1">+</span><span class="s2">&quot;pass=&quot;</span><span class="s1">+password</span><span class="s0">,</span>
+                    <span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">String rol = </span><span class="s2">&quot;undefine&quot;</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">(c!=</span><span class="s0">null</span><span class="s1">){</span>
+                <span class="s1">c.moveToFirst()</span><span class="s0">;</span>
+                <span class="s0">do </span><span class="s1">{</span>
+                    <span class="s1">rol=c.getString(c.getColumnIndex(</span><span class="s2">&quot;rol&quot;</span><span class="s1">))</span><span class="s0">;</span>
+                <span class="s1">}</span><span class="s0">while </span><span class="s1">(c.moveToNext())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s0">return </span><span class="s1">rol</span><span class="s0">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(Exception e){</span>
+            <span class="s1">Toast.makeText(context</span><span class="s0">,</span><span class="s2">&quot;Error en las credenciales&quot;</span><span class="s0">,</span><span class="s1">Toast.LENGTH_LONG)</span><span class="s0">;</span>
+            <span class="s0">return </span><span class="s2">&quot;undefine&quot;</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

@@ -30,6 +30,8 @@ DetalleActivity.java</font>
 <span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
 
+<span class="s0">import </span><span class="s1">es.dmoral.toasty.Toasty</span><span class="s0">;</span>
+
 <span class="s0">public class </span><span class="s1">DetalleActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
     <span class="s0">private </span><span class="s1">String nombre = </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s1">descripcion = </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s1">precio = </span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
     <span class="s0">private int </span><span class="s1">imagen = </span><span class="s3">0</span><span class="s0">;</span>
@@ -66,7 +68,7 @@ DetalleActivity.java</font>
                 <span class="s1">}</span><span class="s0">else if</span><span class="s1">(radio == R.id.radio_color_3){</span>
                     <span class="s1">comprar()</span><span class="s0">;</span>
                 <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
-                    <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Debe seleccionar un color.&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                    <span class="s1">Toasty.warning(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Debe seleccionar un color.&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
                 <span class="s1">}</span>
             <span class="s1">}</span>
         <span class="s1">})</span><span class="s0">;</span>
@@ -76,7 +78,7 @@ DetalleActivity.java</font>
     <span class="s0">private void </span><span class="s1">iniVistas(){</span>
         <span class="s1">nombreTel = findViewById(R.id.detalle_telefono_nombre)</span><span class="s0">;</span>
         <span class="s1">imgTel = findViewById(R.id.detalle_telefono_imagen)</span><span class="s0">;</span>
-        <span class="s1">descripcionTel = findViewById(R.id.detalle_telefono_descripcion)</span><span class="s0">;</span>
+        <span class="s1">descripcionTel = findViewById(R.id.txtDescripcion)</span><span class="s0">;</span>
         <span class="s1">precioTel = findViewById(R.id.detalle_telefono_precio)</span><span class="s0">;</span>
 
         <span class="s1">radioGroup = findViewById(R.id.radio_color)</span><span class="s0">;</span>
@@ -108,21 +110,21 @@ DetalleActivity.java</font>
         <span class="s1">String ram = </span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
         <span class="s0">if </span><span class="s1">(check32.isChecked()){</span>
             <span class="s1">ram = check32.getText().toString()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.success(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.info(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
             <span class="s1">onBackPressed()</span><span class="s0">;</span>
         <span class="s1">}</span><span class="s0">else if </span><span class="s1">(check64.isChecked()){</span>
             <span class="s1">ram = check64.getText().toString()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.success(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.info(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
             <span class="s1">onBackPressed()</span><span class="s0">;</span>
         <span class="s1">}</span><span class="s0">else if </span><span class="s1">(check128.isChecked()){</span>
             <span class="s1">ram = check128.getText().toString()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.success(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Gracias por comprar un &quot;</span><span class="s1">+nombre+ </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria interna: &quot; </span><span class="s1">+ color + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">Memoria RAM: &quot; </span><span class="s1">+ ram + </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">TOTAL: &quot; </span><span class="s1">+ precio</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.info(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Su pedido está en camino&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
             <span class="s1">onBackPressed()</span><span class="s0">;</span>
         <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span>
-            <span class="s1">Toast.makeText(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Debe seleccionar una memoria ram.&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+            <span class="s1">Toasty.warning(DetalleActivity.</span><span class="s0">this, </span><span class="s2">&quot;Debe seleccionar una memoria ram.&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
         <span class="s1">}</span>
     <span class="s1">}</span>
 

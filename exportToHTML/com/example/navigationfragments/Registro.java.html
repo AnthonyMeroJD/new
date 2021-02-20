@@ -18,19 +18,20 @@ Registro.java</font>
 
 <span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
-<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
-<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Spinner</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
 
-<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
-<span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
-<span class="s0">import </span><span class="s1">androidx.fragment.app.Fragment</span><span class="s0">;</span>
 
-<span class="s0">import </span><span class="s1">com.example.navigationfragments.R</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.entities.Usuario</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.example.navigationfragments.repo.Usuarios</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">es.dmoral.toasty.Toasty</span><span class="s0">;</span>
 
 <span class="s0">public class </span><span class="s1">Registro </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
     <span class="s0">private </span><span class="s1">EditText cedula</span><span class="s0">;</span>
@@ -40,12 +41,14 @@ Registro.java</font>
     <span class="s0">private </span><span class="s1">EditText direccion</span><span class="s0">;</span>
     <span class="s0">private </span><span class="s1">EditText nombre</span><span class="s0">;</span>
     <span class="s0">private </span><span class="s1">Button btn</span><span class="s0">;</span>
-
+    <span class="s0">private </span><span class="s1">ImageView back</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Spinner spinner</span><span class="s0">;</span>
 
     <span class="s0">public void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
         <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
 
         <span class="s1">setContentView(R.layout.activity_registro)</span><span class="s0">;</span>
+        <span class="s1">back=findViewById(R.id.imgAtras)</span><span class="s0">;</span>
         <span class="s1">cedula=(EditText) findViewById(R.id.ediTextCedula)</span><span class="s0">;</span>
         <span class="s1">pass=findViewById(R.id.editTextContrasena)</span><span class="s0">;</span>
         <span class="s1">ciudad=findViewById(R.id.editTextCiudad)</span><span class="s0">;</span>
@@ -53,25 +56,40 @@ Registro.java</font>
         <span class="s1">direccion=findViewById(R.id.editTextDireccion)</span><span class="s0">;</span>
         <span class="s1">nombre=findViewById(R.id.editTextNombre)</span><span class="s0">;</span>
         <span class="s1">btn=(Button) findViewById(R.id.buttonCrearCuentaRegistro)</span><span class="s0">;</span>
+        <span class="s1">spinner = (Spinner) findViewById(R.id.spinner)</span><span class="s0">;</span>
+        <span class="s1">ArrayAdapter&lt;CharSequence&gt; adapter = ArrayAdapter.createFromResource(</span><span class="s0">this,</span>
+                <span class="s1">R.array.spinner_array</span><span class="s0">, </span><span class="s1">android.R.layout.simple_spinner_item)</span><span class="s0">;</span>
+        <span class="s1">adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)</span><span class="s0">;</span>
+        <span class="s1">spinner.setAdapter(adapter)</span><span class="s0">;</span>
+
 
     <span class="s1">}</span>
     <span class="s1">@Override</span>
     <span class="s0">protected void </span><span class="s1">onStart() {</span>
         <span class="s0">super</span><span class="s1">.onStart()</span><span class="s0">;</span>
-
+        <span class="s1">back.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+                <span class="s1">Intent i=</span><span class="s0">new </span><span class="s1">Intent(Registro.</span><span class="s0">this,</span><span class="s1">Login.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">startActivity(i)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
         <span class="s1">btn.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
             <span class="s1">@Override</span>
             <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
-               <span class="s1">String ci</span><span class="s0">,</span><span class="s1">pw</span><span class="s0">,</span><span class="s1">cid</span><span class="s0">,</span><span class="s1">tef</span><span class="s0">,</span><span class="s1">dic</span><span class="s0">,</span><span class="s1">name</span><span class="s0">;</span>
+               <span class="s1">String ci</span><span class="s0">,</span><span class="s1">pw</span><span class="s0">,</span><span class="s1">cid</span><span class="s0">,</span><span class="s1">tef</span><span class="s0">,</span><span class="s1">dic</span><span class="s0">,</span><span class="s1">name</span><span class="s0">,</span><span class="s1">rol</span><span class="s0">;</span>
                <span class="s1">ci=cedula.getText().toString()</span><span class="s0">;</span>
                <span class="s1">pw=pass.getText().toString()</span><span class="s0">;</span>
                <span class="s1">cid=ciudad.getText().toString()</span><span class="s0">;</span>
                <span class="s1">tef=telefono.getText().toString()</span><span class="s0">;</span>
                <span class="s1">dic=direccion.getText().toString()</span><span class="s0">;</span>
                <span class="s1">name=nombre.getText().toString()</span><span class="s0">;</span>
-               <span class="s1">Usuario usuario=</span><span class="s0">new </span><span class="s1">Usuario(ci</span><span class="s0">,</span><span class="s1">name</span><span class="s0">,</span><span class="s1">pw</span><span class="s0">,</span><span class="s1">cid</span><span class="s0">,</span><span class="s1">tef</span><span class="s0">,</span><span class="s1">dic)</span><span class="s0">;</span>
-               <span class="s1">Usuarios.registrar(usuario)</span><span class="s0">;</span>
-               <span class="s1">Toast.makeText(v.getContext()</span><span class="s0">,</span><span class="s2">&quot;Usuario crado correctamente&quot;</span><span class="s0">,</span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+               <span class="s1">rol=spinner.getSelectedItem().toString()</span><span class="s0">;</span>
+                <span class="s1">Usuario usuario=</span><span class="s0">new </span><span class="s1">Usuario(ci</span><span class="s0">,</span><span class="s1">name</span><span class="s0">,</span><span class="s1">pw</span><span class="s0">,</span><span class="s1">cid</span><span class="s0">,</span><span class="s1">tef</span><span class="s0">,</span><span class="s1">dic</span><span class="s0">,</span><span class="s1">rol)</span><span class="s0">;</span>
+               <span class="s1">Usuarios.registrar(usuario</span><span class="s0">,</span><span class="s1">v.getContext()</span>
+               <span class="s1">)</span><span class="s0">;</span>
+
+                <span class="s1">Toasty.success(v.getContext()</span><span class="s0">, </span><span class="s2">&quot;Usuario crado correctamente&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
                <span class="s1">Intent i=</span><span class="s0">new </span><span class="s1">Intent(Registro.</span><span class="s0">this,</span><span class="s1">Login.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
                <span class="s1">startActivity(i)</span><span class="s0">;</span>
 

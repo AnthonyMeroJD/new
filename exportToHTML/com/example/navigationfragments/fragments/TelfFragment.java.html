@@ -6,8 +6,7 @@
 .s0 { color: #cc7832;}
 .s1 { color: #a9b7c6;}
 .s2 { color: #6a8759;}
-.s3 { color: #808080;}
-.s4 { color: #6897bb;}
+.s3 { color: #6897bb;}
 </style>
 </head>
 <body bgcolor="#2b2b2b">
@@ -28,7 +27,6 @@ TelfFragment.java</font>
 <span class="s0">import </span><span class="s1">android.widget.ListView</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.Spinner</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
-<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
 
 <span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
 <span class="s0">import </span><span class="s1">androidx.annotation.Nullable</span><span class="s0">;</span>
@@ -68,7 +66,6 @@ TelfFragment.java</font>
         <span class="s1">listView.setOnItemClickListener(</span><span class="s0">new </span><span class="s1">AdapterView.OnItemClickListener() {</span>
             <span class="s1">@Override</span>
             <span class="s0">public void </span><span class="s1">onItemClick(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">position</span><span class="s0">, long </span><span class="s1">id) {</span>
-                <span class="s3">//Toast.makeText(getContext(), telefonos.get(position).getNombre(), Toast.LENGTH_SHORT).show();</span>
                 <span class="s1">Telefono telefono = telefonos.get(position)</span><span class="s0">;</span>
                 <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(getContext()</span><span class="s0">, </span><span class="s1">DetalleActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
                 <span class="s1">intent.putExtra(</span><span class="s2">&quot;NOMBRE&quot;</span><span class="s0">, </span><span class="s1">telefono.getNombre())</span><span class="s0">;</span>
@@ -99,31 +96,27 @@ TelfFragment.java</font>
             <span class="s0">public void </span><span class="s1">onItemSelected(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">position</span><span class="s0">, long </span><span class="s1">id) {</span>
                 <span class="s1">telefonos.clear()</span><span class="s0">;</span>
                 <span class="s0">if </span><span class="s1">(parent.getItemAtPosition(position).equals(</span><span class="s2">&quot;Xiaomi&quot;</span><span class="s1">)){</span>
-                    <span class="s3">//listaTelefonos = Marcas.XIAOMI;</span>
                     <span class="s1">telefonos = Marcas.Xiaomi()</span><span class="s0">;</span>
                 <span class="s1">}</span>
                 <span class="s0">if </span><span class="s1">(parent.getItemAtPosition(position).equals(</span><span class="s2">&quot;Samsung&quot;</span><span class="s1">)){</span>
-                    <span class="s3">//listaTelefonos = Marcas.SAMSUNG;</span>
+
                     <span class="s1">telefonos = Marcas.Samsung()</span><span class="s0">;</span>
                 <span class="s1">}</span>
                 <span class="s0">if </span><span class="s1">(parent.getItemAtPosition(position).equals(</span><span class="s2">&quot;Apple&quot;</span><span class="s1">)){</span>
-                    <span class="s3">//listaTelefonos = Marcas.APPLE;</span>
+
                     <span class="s1">telefonos = Marcas.Apple()</span><span class="s0">;</span>
                 <span class="s1">}</span>
                 <span class="s0">if </span><span class="s1">(parent.getItemAtPosition(position).equals(</span><span class="s2">&quot;Huawei&quot;</span><span class="s1">)){</span>
-                    <span class="s3">//listaTelefonos = Marcas.HUAWEI;</span>
                     <span class="s1">telefonos = Marcas.Huawei()</span><span class="s0">;</span>
                 <span class="s1">}</span>
                 <span class="s0">if </span><span class="s1">(parent.getItemAtPosition(position).equals(</span><span class="s2">&quot;Nokia&quot;</span><span class="s1">)){</span>
-                    <span class="s3">//listaTelefonos = Marcas.NOKIA;</span>
+                   <span class="s1">telefonos = Marcas.Nokia()</span><span class="s0">;</span>
                 <span class="s1">}</span>
-                <span class="s3">//Toast.makeText(getContext(), &quot;Lista: &quot;+listaTelefonos.length, Toast.LENGTH_SHORT).show();</span>
-                <span class="s3">/*adapter = new ArrayAdapter&lt;&gt;(getContext(), android.R.layout.simple_list_item_1, listaTelefonos); 
-                listView.setAdapter(adapter);*/</span>
+
                 <span class="s1">myAdapter = </span><span class="s0">new </span><span class="s1">ListaAdapter(getContext()</span><span class="s0">, </span><span class="s1">R.layout.vista_telf</span><span class="s0">, </span><span class="s1">telefonos)</span><span class="s0">;</span>
                 <span class="s1">listView.setAdapter(myAdapter)</span><span class="s0">;</span>
 
-                <span class="s0">if </span><span class="s1">(telefonos.size() == </span><span class="s4">0</span><span class="s1">){</span>
+                <span class="s0">if </span><span class="s1">(telefonos.size() == </span><span class="s3">0</span><span class="s1">){</span>
                     <span class="s1">tvNoDisponible.setVisibility(View.VISIBLE)</span><span class="s0">;</span>
                 <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span>
                     <span class="s1">tvNoDisponible.setVisibility(View.GONE)</span><span class="s0">;</span>

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.navigationfragments.fragments.AboutFragment;
+import com.example.navigationfragments.fragments.BusquedaFechaFragment;
 import com.example.navigationfragments.fragments.RegistroFragment;
 import com.example.navigationfragments.fragments.UsuariosFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +19,7 @@ public class MainActivityAdmin extends AppCompatActivity {
     RegistroFragment registroFragment=new RegistroFragment();
     UsuariosFragment usuariosFragment=new UsuariosFragment();
     AboutFragment aboutFragment = new AboutFragment();
+    BusquedaFechaFragment busqueda_fechas=new BusquedaFechaFragment();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -48,6 +50,9 @@ public class MainActivityAdmin extends AppCompatActivity {
 
                         case R.id.nav_editClientes:
                             selectedFragment = aboutFragment;
+                            break;
+                        case R.id.nav_busqueda_fecha:
+                            selectedFragment=busqueda_fechas;
                             break;
                     }
 

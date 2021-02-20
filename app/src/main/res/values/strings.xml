@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Celulares</string>
+    <string name="app_name">App Celulares</string>
     <string name="home">Home</string>
     <string name="telfs">Telefonos</string>
     <string name="tablets">Tablets</string>
@@ -36,6 +36,7 @@
     <!-- Elementos Admin -->
     <string name="registro_clientes">Registro Clientes</string>
     <string name="busqueda_clientes">Busqueda Clientes</string>
+    <string name="busqueda_fechas">Busqueda Fechas</string>
     <string name="editar_clientes">Editar Clientes</string>
     <string name="about">About</string>
 
