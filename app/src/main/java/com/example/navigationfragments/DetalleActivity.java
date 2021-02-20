@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import es.dmoral.toasty.Toasty;
+
 public class DetalleActivity extends AppCompatActivity {
     private String nombre = "", descripcion = "", precio = "";
     private int imagen = 0;
@@ -49,7 +51,7 @@ public class DetalleActivity extends AppCompatActivity {
                 }else if(radio == R.id.radio_color_3){
                     comprar();
                 }else{
-                    Toast.makeText(DetalleActivity.this, "Debe seleccionar un color.", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(DetalleActivity.this, "Debe seleccionar un color.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -59,7 +61,7 @@ public class DetalleActivity extends AppCompatActivity {
     private void iniVistas(){
         nombreTel = findViewById(R.id.detalle_telefono_nombre);
         imgTel = findViewById(R.id.detalle_telefono_imagen);
-        descripcionTel = findViewById(R.id.detalle_telefono_descripcion);
+        descripcionTel = findViewById(R.id.txtDescripcion);
         precioTel = findViewById(R.id.detalle_telefono_precio);
 
         radioGroup = findViewById(R.id.radio_color);
@@ -91,21 +93,21 @@ public class DetalleActivity extends AppCompatActivity {
         String ram = "";
         if (check32.isChecked()){
             ram = check32.getText().toString();
-            Toast.makeText(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
-            Toast.makeText(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
+            Toasty.success(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
+            Toasty.info(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
             onBackPressed();
         }else if (check64.isChecked()){
             ram = check64.getText().toString();
-            Toast.makeText(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
-            Toast.makeText(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
+            Toasty.success(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
+            Toasty.info(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
             onBackPressed();
         }else if (check128.isChecked()){
             ram = check128.getText().toString();
-            Toast.makeText(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
-            Toast.makeText(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
+            Toasty.success(DetalleActivity.this, "Gracias por comprar un "+nombre+ "\nMemoria interna: " + color + "\nMemoria RAM: " + ram + "\nTOTAL: " + precio, Toast.LENGTH_LONG).show();
+            Toasty.info(DetalleActivity.this, "Su pedido está en camino", Toast.LENGTH_SHORT).show();
             onBackPressed();
         }else {
-            Toast.makeText(DetalleActivity.this, "Debe seleccionar una memoria ram.", Toast.LENGTH_SHORT).show();
+            Toasty.warning(DetalleActivity.this, "Debe seleccionar una memoria ram.", Toast.LENGTH_SHORT).show();
         }
     }
 

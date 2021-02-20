@@ -15,4 +15,8 @@
         android:id="@+id/nav_tablets"
         android:icon="@drawable/ic_baseline_tablet_android_24"
         android:title="@string/tablets"/>
+    <item
+        android:id="@+id/nav_cliente"
+        android:icon="@drawable/ic_persona"
+        android:title="@string/about"/>
 </menu>

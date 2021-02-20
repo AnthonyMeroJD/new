@@ -1,4 +1,4 @@
-package com.example.navigationfragments;
+package com.example.navigationfragments.entities;
 
 public class Telefono {
     private String nombre;

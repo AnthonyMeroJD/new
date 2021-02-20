@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_fragment_home"
+        android:id="@+id/tv_fragment_home_tablets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/venta_tablets"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/contenedor_spinner_tablets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/tv_fragment_home_tablets">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/marca"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerTablets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_tablets"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/tablets"
-        android:gravity="center"
-        android:textSize="24sp"/>
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/contenedor_spinner_tablets"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tb_no_disponible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/no_disponible"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_below="@id/contenedor_spinner_tablets"/>
+
+</RelativeLayout>

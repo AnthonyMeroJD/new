@@ -4,17 +4,47 @@
     <string name="telfs">Telefonos</string>
     <string name="tablets">Tablets</string>
     <string name="venta">Teléfonos disponibles</string>
+    <string name="venta_tablets">Tablets disponibles</string>
     <string name="marca">Marca</string>
     <string name="no_disponible">No hay teléfonos disponibles</string>
     <string name="comprar">Comprar</string>
-    <string name="seleciones_color">Seleccione color</string>
+    <string name="seleciones_color">Seleccione color:</string>
     <string name="rojo">Rojo</string>
     <string name="negro">Negro</string>
     <string name="blanco">Blanco</string>
     <string name="seleccione_accesorios">Selecciones Accesorios</string>
-    <string name="seleccione_memoria">Seleccione memoria</string>
+    <string name="seleccione_memoria">Seleccione memoria:</string>
     <string name="memoria_128">128 GB</string>
     <string name="memoria_64">64 GB</string>
     <string name="memoria_32">32 GB</string>
-    <string name="descripcion">Descripción</string>
+    <string name="descripcion">Descripción:</string>
+    <!-- Pantalla de Registro -->
+    <string name="registro">Registro</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="cedula">Cedula</string>
+    <string name="direccion">Direccion</string>
+    <string name="telefono">Numero de Telefono</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="contrasena">Contrasena</string>
+    <!-- Pantalla de login -->
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string-array name="spinner_array">
+        <item>Administrador</item>
+        <item>Cliente</item>
+    </string-array>
+    <!-- Elementos Admin -->
+    <string name="registro_clientes">Registro Clientes</string>
+    <string name="busqueda_clientes">Busqueda Clientes</string>
+    <string name="editar_clientes">Editar Clientes</string>
+    <string name="about">About</string>
+
+    <!-- Elementos About -->
+    <string name="autor1">Correo: bwbarrionuevo@itb.edu.ec</string>
+    <string name="autor1Nombre">Bryan Wladimir Barrionuevo Holguin</string>
+    <string name="autor2">Correo: ddasanza@itb.edu.ec</string>
+    <string name="autor2Nombre">Azansa Daniela Parranga De los Angeles</string>
+    <string name="autor1Numero">Número: 0997332855</string>
+    <string name="autor2Numero">Número: 0969953266</string>
+    <string name="salir">Salir</string>
 </resources>

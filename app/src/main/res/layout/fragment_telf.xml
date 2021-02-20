@@ -12,7 +12,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal" />
 
     <LinearLayout
         android:id="@+id/contenedor_spinner"
@@ -27,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/marca"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp" />
 
         <Spinner
             android:id="@+id/spinner"

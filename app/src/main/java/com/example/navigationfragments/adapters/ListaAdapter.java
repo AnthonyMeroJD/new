@@ -1,4 +1,4 @@
-package com.example.navigationfragments;
+package com.example.navigationfragments.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.navigationfragments.R;
+import com.example.navigationfragments.entities.Telefono;
 
 import java.util.List;
 

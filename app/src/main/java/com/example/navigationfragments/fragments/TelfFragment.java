@@ -10,17 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.navigationfragments.DetalleActivity;
-import com.example.navigationfragments.ListaAdapter;
-import com.example.navigationfragments.Marcas;
+import com.example.navigationfragments.adapters.ListaAdapter;
+import com.example.navigationfragments.data.Marcas;
 import com.example.navigationfragments.R;
-import com.example.navigationfragments.Telefono;
+import com.example.navigationfragments.entities.Telefono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,6 @@ public class TelfFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getContext(), telefonos.get(position).getNombre(), Toast.LENGTH_SHORT).show();
                 Telefono telefono = telefonos.get(position);
                 Intent intent = new Intent(getContext(), DetalleActivity.class);
                 intent.putExtra("NOMBRE", telefono.getNombre());
@@ -81,25 +79,23 @@ public class TelfFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 telefonos.clear();
                 if (parent.getItemAtPosition(position).equals("Xiaomi")){
-                    //listaTelefonos = Marcas.XIAOMI;
                     telefonos = Marcas.Xiaomi();
                 }
                 if (parent.getItemAtPosition(position).equals("Samsung")){
-                    //listaTelefonos = Marcas.SAMSUNG;
+
+                    telefonos = Marcas.Samsung();
                 }
                 if (parent.getItemAtPosition(position).equals("Apple")){
-                    //listaTelefonos = Marcas.APPLE;
+
                     telefonos = Marcas.Apple();
                 }
                 if (parent.getItemAtPosition(position).equals("Huawei")){
-                    //listaTelefonos = Marcas.HUAWEI;
+                    telefonos = Marcas.Huawei();
                 }
                 if (parent.getItemAtPosition(position).equals("Nokia")){
-                    //listaTelefonos = Marcas.NOKIA;
+                   telefonos = Marcas.Nokia();
                 }
-                //Toast.makeText(getContext(), "Lista: "+listaTelefonos.length, Toast.LENGTH_SHORT).show();
-                /*adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, listaTelefonos);
-                listView.setAdapter(adapter);*/
+
                 myAdapter = new ListaAdapter(getContext(), R.layout.vista_telf, telefonos);
                 listView.setAdapter(myAdapter);
 

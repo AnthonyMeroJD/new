@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_regClientes"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/registro_clientes"/>
+
+    <item
+        android:id="@+id/nav_busClientes"
+        android:icon="@drawable/ic_busqueda"
+        android:title="@string/busqueda_clientes"/>
+
+    <item
+        android:id="@+id/nav_editClientes"
+        android:icon="@drawable/ic_persona"
+        android:title="@string/about"/>
+</menu>

@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>ListaAdapter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ListaAdapter.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.navigationfragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">ListaAdapter </span><span class="s0">extends </span><span class="s1">ArrayAdapter&lt;Telefono&gt; {</span>
+
+    <span class="s0">private int </span><span class="s1">resourceLayout</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Context mContext</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">ListaAdapter(Context context</span><span class="s0">, int </span><span class="s1">resource</span><span class="s0">, </span><span class="s1">List&lt;Telefono&gt; items) {</span>
+        <span class="s0">super</span><span class="s1">(context</span><span class="s0">, </span><span class="s1">resource</span><span class="s0">, </span><span class="s1">items)</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.resourceLayout = resource</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.mContext = context</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">View getView(</span><span class="s0">int </span><span class="s1">position</span><span class="s0">, </span><span class="s1">View convertView</span><span class="s0">, </span><span class="s1">ViewGroup parent) {</span>
+
+        <span class="s1">View v = convertView</span><span class="s0">;</span>
+
+        <span class="s0">if </span><span class="s1">(v == </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">LayoutInflater vi</span><span class="s0">;</span>
+            <span class="s1">vi = LayoutInflater.from(mContext)</span><span class="s0">;</span>
+            <span class="s1">v = vi.inflate(resourceLayout</span><span class="s0">, null</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">Telefono p = getItem(position)</span><span class="s0">;</span>
+
+        <span class="s0">if </span><span class="s1">(p != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">TextView nombre = (TextView) v.findViewById(R.id.tv_telf_nombre)</span><span class="s0">;</span>
+            <span class="s1">TextView precio = (TextView) v.findViewById(R.id.tv_telf_precio)</span><span class="s0">;</span>
+            <span class="s1">ImageView imagen = (ImageView) v.findViewById(R.id.iv_img_telf)</span><span class="s0">;</span>
+
+            <span class="s0">if </span><span class="s1">(nombre != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">nombre.setText(p.getNombre())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s0">if </span><span class="s1">(precio != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">precio.setText(p.getPrecio())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s0">if </span><span class="s1">(imagen != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">imagen.setImageResource(p.getImagen())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s0">return </span><span class="s1">v</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
